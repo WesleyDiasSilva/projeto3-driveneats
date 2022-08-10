@@ -10,7 +10,32 @@ body{
   box-sizing: border-box;
   position: fixed;
   top: 0;
+  box-shadow: 0 10px 5 px rgba(0, 0, 0, 0.24);
+  z-index: 1;
 }
+
+.active{
+  border: 3px solid #32B72F;
+}
+
+.active #checkmark{
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  bottom: 0;
+  right: 7px;
+  display: initial;
+}
+
+#checkmark{
+  display: none;
+}
+
+#checknone{
+  display: none;
+}
+
+
 
 h1{
   font-family: Righteous;
@@ -52,7 +77,6 @@ h2{
   background-color: rgb(255, 252, 252);
   width: 172px;
   margin: 5px;
-
 }
 
 .item img{
@@ -69,6 +93,8 @@ h2{
   padding: 10px;
   box-sizing: border-box;
   border-radius: 3px;
+  box-shadow: 1px 1px rgb(221, 221, 221);
+  position: relative;
 }
 
 h6{
