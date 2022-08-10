@@ -1,0 +1,110 @@
+body{
+  background-color: #eeeeee;
+}
+
+.topo{
+  background-color: red;
+  height: 92px;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+h1{
+  font-family: Righteous;
+  color: white;
+  font-size: 44px;
+}
+
+p{
+  font-family: roboto;
+  color: white;
+  font-size: 18px;
+}
+
+h2{
+  font-family: Righteous;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.refeicao, .bebida, .sobremesa{
+  margin-top: 50px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.itens{
+  height: 216px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.itens div{
+  background-color: rgb(255, 252, 252);
+  width: 172px;
+  margin: 5px;
+}
+
+.item img{
+  border-radius: 3px;
+  margin-bottom: 5px;
+  height: 50%;
+  width: 150px;
+}
+
+.item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+h6{
+  font-family: roboto;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.descricao-item{
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #A6A6A6;
+}
+
+.preco-item{
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.sobremesa{
+  margin-bottom: 120px;
+}
+
+.confirmar-pedido{
+  height: 92px;
+  background-color: white;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmar-pedido button{
+  height: 60%;
+  border-radius: 50px;
+  border: none;
+  width: 80%;
+  font-family: roboto;
+  font-size: 20px;
+  color: white;
+  background-color: #b8b6b6;
+}
