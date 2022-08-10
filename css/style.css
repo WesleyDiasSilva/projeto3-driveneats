@@ -8,6 +8,8 @@ body{
   width: 100%;
   padding: 15px;
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
 }
 
 h1{
@@ -28,7 +30,13 @@ h2{
   margin-bottom: 10px;
 }
 
-.refeicao, .bebida, .sobremesa{
+.refeicao{
+  padding-left: 10px;
+  box-sizing: border-box;
+  margin-top: 150px;
+}
+
+.bebida, .sobremesa{
   margin-top: 50px;
   padding-left: 10px;
   box-sizing: border-box;
@@ -44,6 +52,7 @@ h2{
   background-color: rgb(255, 252, 252);
   width: 172px;
   margin: 5px;
+
 }
 
 .item img{
