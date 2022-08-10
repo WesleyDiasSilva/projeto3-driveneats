@@ -10,7 +10,7 @@ body{
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  box-shadow: 0 10px 5 px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.24);
   z-index: 1;
 }
 
