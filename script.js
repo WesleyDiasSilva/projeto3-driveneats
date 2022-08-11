@@ -42,18 +42,18 @@ function selecionadoComida(){
 
   //Até aqui eu só troquei a classe do css para modificar a aparencia do elemento
 
-  carrinhoComida.forEach(item => {
-    if(item.includes('comida')){
-      carrinhoComida = []
-    }
-  })
-  
-  carrinhoComida.push(this.childNodes[3].innerText,'comida')
   var valorComida = this.childNodes[7].innerText
   valorComida = valorComida.replace('R$','')
   valorComida = valorComida.replace(',','.')
   valorComida = Number(valorComida)
-  carrinhoComida.push(valorComida)
+  carrinhoComida.push({
+    nome:this.childNodes[3].innerText,
+    valor:valorComida,
+    tipo:'comida'
+  })
+  if(carrinhoComida.length > 1){
+    carrinhoComida.shift()
+  }
   console.log(carrinhoComida)
 
   //Aqui eu to colocando o produto selecionado num array
@@ -72,20 +72,22 @@ function selecionadoBebida(){
     }
   })
   this.classList.add('active')
-  carrinhoBebida.push('bebida')
 
-  carrinhoBebida.forEach(item => {
-    if(item.includes('bebida')){
-      carrinhoBebida = []
-    }
-  })
+  // Até aqui eu só troquei a classe do css para modificar a aparencia do elemento
+
   
-  carrinhoBebida.push(this.childNodes[3].innerText,'bebida')
   let valorBebida = this.childNodes[7].innerText
   valorBebida = valorBebida.replace('R$','')
   valorBebida = valorBebida.replace(',','.')
   valorBebida = Number(valorBebida)
-  carrinhoBebida.push(valorBebida)
+  carrinhoBebida.push({
+    nome:this.childNodes[3].innerText,
+    valor: valorBebida,
+    tipo:'bebida'})
+
+    if(carrinhoBebida.length > 1){
+      carrinhoBebida.shift()
+    }
   console.log(carrinhoBebida)
 
 
@@ -106,18 +108,20 @@ function selecionadoSobremesa(){
   this.classList.add('active')
   carrinhoSobremesa.push('sobremesa')
 
-  carrinhoSobremesa.forEach(item => {
-    if(item.includes('sobremesa')){
-      carrinhoSobremesa = []
-    }
-  })
   
-  carrinhoSobremesa.push(this.childNodes[3].innerText, 'sobremesa')
   let valorSobremesa = this.childNodes[7].innerText
   valorSobremesa = valorSobremesa.replace('R$','')
   valorSobremesa = valorSobremesa.replace(',','.')
   valorSobremesa = Number(valorSobremesa)
-  carrinhoSobremesa.push(valorSobremesa)
+  carrinhoSobremesa.push({
+    nome:this.childNodes[3].innerText,
+    valor:valorSobremesa,
+    tipo:'sobremesa'})
+
+    if(carrinhoSobremesa.length > 1){
+      carrinhoSobremesa.shift()
+    }
+
   console.log( carrinhoSobremesa)
 
 
@@ -144,19 +148,29 @@ function confirmacao(){
   modal.classList.remove('modal-off');
   modal.classList.add('modal-container')
 
-  modalComida.innerText = carrinhoComida[0]
-  modalBebida.innerText = carrinhoBebida[0]
-  modalSobremesa.innerText = carrinhoSobremesa[0]
+  modalComida.innerText = carrinhoComida[0].nome
+  modalBebida.innerText = carrinhoBebida[0].nome
+  modalSobremesa.innerText = carrinhoSobremesa[0].nome
 
-  modalComidaPreco.innerText = carrinhoComida[2]
-  modalBebidaPreco.innerText = carrinhoBebida[2]
-  modalSobremesaPreco.innerText = carrinhoSobremesa[2]
+  modalComidaPreco.innerText = carrinhoComida[0].valor.toFixed(2)
+  modalBebidaPreco.innerText = carrinhoBebida[0].valor.toFixed(2)
+  modalSobremesaPreco.innerText = carrinhoSobremesa[0].valor.toFixed(2)
 
-  modalTotalValor.innerText = carrinhoBebida[2] + carrinhoComida[2] + carrinhoSobremesa[2]
+  let valorTotal = carrinhoBebida[0].valor + carrinhoComida[0].valor + carrinhoSobremesa[0].valor
+  valorTotal = valorTotal.toFixed(2)
+  valorTotal = 'R$ ' + valorTotal.replace('.',',')
+  modalTotalValor.innerText = valorTotal
 
+  
 
-  console.log(modalComidaPreco.innerText)
-  console.log(modalTotalValor)
+  let modalComidaPrecoOk = 'R$ ' + modalComidaPreco.innerText.replace('.',',')
+  modalComidaPreco.innerText = modalComidaPrecoOk
+
+  let modalBebidaOk = 'R$ ' + modalBebidaPreco.innerText.replace('.',',')
+  modalBebidaPreco.innerText = modalBebidaOk
+
+  let modalSobremesaOk = 'R$ ' + modalSobremesaPreco.innerText.replace('.',',')
+  modalSobremesaPreco.innerText = modalSobremesaOk
 
   
 }
@@ -167,16 +181,20 @@ function whatsApp(){
   const nome = prompt('Qual o seu nome?')
   const endereco = prompt('Qual o seu endereço?')
 
-  const valorComida = carrinhoComida[2]
-  const valorBebida = carrinhoBebida[2]
-  const valorSobremesa = carrinhoSobremesa[2]
+  
+
+  const valorComida = carrinhoComida[0].valor
+  const valorBebida = carrinhoBebida[0].valor
+  const valorSobremesa = carrinhoSobremesa[0].valor
   let valorPedido = valorComida + valorBebida + valorSobremesa
   valorPedido = valorPedido.toFixed(2)
+  valorPedido = ''+valorPedido.replace('.',',')
+  console.log(valorComida)
 
   const linha1 = 'Olá, gostaria de fazer o pedido:'
-  const linha2 = '- Prato: ' + carrinhoComida[0]
-  const linha3 = '- Bebida: ' + carrinhoBebida[0]
-  const linha4 = '- Sobremesa: ' + carrinhoSobremesa[0]
+  const linha2 = '- Prato: ' + carrinhoComida[0].nome
+  const linha3 = '- Bebida: ' + carrinhoBebida[0].nome
+  const linha4 = '- Sobremesa: ' + carrinhoSobremesa[0].nome
   const linha5 = 'Total: R$ ' + valorPedido
   const linha6 = 'Nome: ' + nome
   const linha7 = 'Endereço: ' + endereco
@@ -193,8 +211,6 @@ function whatsApp(){
 function fecharModal(){
   modal.classList.remove('modal-container')
   modal.classList.add('modal-off')
-
-  console.log(carrinhoBebida)
 }
 
 botaoCancelar.addEventListener('click', fecharModal)
