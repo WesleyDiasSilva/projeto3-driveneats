@@ -5,9 +5,27 @@ const arrayAlmoco = Array.from(itensAlmoço)
 const arrayBebida = Array.from(itensBebida)
 const arraySobremesa = Array.from(itenssobremesa)
 const botao = document.querySelector('.botao')
+const modal = document.querySelector('.modal-off')
+const botaoPedir = document.getElementById('pedir')
+const botaoCancelar = document.getElementById('cancelar')
+
+let modalComida = document.getElementById('modalComida');
+let modalComidaPreco = document.getElementById('modalComidaPreco');
+
+let modalBebida = document.getElementById('modalBebida');
+let modalBebidaPreco = document.getElementById('modalBebidaPreco');
+
+let modalSobremesa = document.getElementById('modalSobremesa');
+let modalSobremesaPreco = document.getElementById('modalSobremesaPreco');
+
+let modalTotalValor = document.getElementById('modalTotalValor')
+
+
 const comida = ''
 const bebida = ''
 const sobremesa = ''
+
+
 
 let carrinhoComida = []
 let carrinhoBebida = []
@@ -122,10 +140,33 @@ arrayBebida.forEach(item => {
   item.addEventListener('click', selecionadoBebida)
 })
 
+function confirmacao(){
+  modal.classList.remove('modal-off');
+  modal.classList.add('modal-container')
 
+  modalComida.innerText = carrinhoComida[0]
+  modalBebida.innerText = carrinhoBebida[0]
+  modalSobremesa.innerText = carrinhoSobremesa[0]
+
+  modalComidaPreco.innerText = carrinhoComida[2]
+  modalBebidaPreco.innerText = carrinhoBebida[2]
+  modalSobremesaPreco.innerText = carrinhoSobremesa[2]
+
+  modalTotalValor.innerText = carrinhoBebida[2] + carrinhoComida[2] + carrinhoSobremesa[2]
+
+
+  console.log(modalComidaPreco.innerText)
+  console.log(modalTotalValor)
+
+  
+}
 
 
 function whatsApp(){
+
+  const nome = prompt('Qual o seu nome?')
+  const endereco = prompt('Qual o seu endereço?')
+
   const valorComida = carrinhoComida[2]
   const valorBebida = carrinhoBebida[2]
   const valorSobremesa = carrinhoSobremesa[2]
@@ -137,13 +178,25 @@ function whatsApp(){
   const linha3 = '- Bebida: ' + carrinhoBebida[0]
   const linha4 = '- Sobremesa: ' + carrinhoSobremesa[0]
   const linha5 = 'Total: R$ ' + valorPedido
+  const linha6 = 'Nome: ' + nome
+  const linha7 = 'Endereço: ' + endereco
 
-  const msg = linha1 + '\n' + linha2 + '\n' + linha3 + '\n' + linha4 + '\n' + linha5
+  const msg = linha1 + '\n' + '\n' + linha2 + '\n' + linha3 + '\n' + linha4 + '\n' + linha5 + '\n' + '\n'+ linha6 + '\n' + linha7
 
 
   const url = encodeURIComponent(msg)
   console.log(url)
 
-  botao.href = 'https://wa.me/5511959631890?text='+url
+  botaoPedir.href = 'https://wa.me/5511959631890?text='+url
 }
-botao.addEventListener('click', whatsApp)
+
+function fecharModal(){
+  modal.classList.remove('modal-container')
+  modal.classList.add('modal-off')
+
+  console.log(carrinhoBebida)
+}
+
+botaoCancelar.addEventListener('click', fecharModal)
+botaoPedir.addEventListener('click', whatsApp)
+botao.addEventListener('click', confirmacao)

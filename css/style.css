@@ -147,8 +147,6 @@ h6{
   align-items: center;
 }
 
-
-
 .confirmar-pedido button{
   height: 60%;
   border-radius: 50px;
@@ -158,11 +156,91 @@ h6{
   font-family: roboto;
   font-size: 20px;
   color: white;
-  background-color: #b8b6b6;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .disable{
   pointer-events: none;
+}
+
+.modal-off{
+  display: none;
+}
+
+.modal-container {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(253, 252, 252, 0.726);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  width: 80%;
+  background-color: #48b968;
+  height: 350px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 30px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.24);
+}
+.modal h3{
+  color: white;
+  font-size: 19px;
+  font-family: Roboto;
+  font-weight: bold;
+  margin-top: 10px;
+
+}
+
+.modal p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+#modalPrimeiroItem{
+  margin-top: 30px;
+}
+
+#modalUltimoItem{
+  margin-bottom: 20px;
+}
+
+.modalItens span{
+  font-weight: 300;
+}
+
+
+#pedir{
+  width: 100%;
+  background-color: #FFF;
+  height: 30%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  text-decoration: none;
+  color: #48b968;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: Roboto;
+}
+
+#cancelar{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Roboto;
+  margin: 15px 0;
 }
