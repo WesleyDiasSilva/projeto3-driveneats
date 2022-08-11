@@ -14,6 +14,21 @@ body{
   z-index: 1;
 }
 
+.botao-ativo{
+  height: 60%;
+  border-radius: 50px;
+  border: none;
+  width: 80%;
+  font-family: roboto;
+  font-size: 20px;
+  color: white;
+  background-color: #0aad25;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .active{
   border: 3px solid #32B72F;
 }
@@ -34,7 +49,6 @@ body{
 #checknone{
   display: none;
 }
-
 
 
 h1{
@@ -142,4 +156,8 @@ h6{
   font-size: 20px;
   color: white;
   background-color: #b8b6b6;
+}
+
+.disable{
+  pointer-events: none;
 }

@@ -4,17 +4,9 @@ const itenssobremesa = document.querySelectorAll('.itens-sobremesa')
 const arrayAlmoco = Array.from(itensAlmoço)
 const arrayBebida = Array.from(itensBebida)
 const arraySobremesa = Array.from(itenssobremesa)
-const item = document.querySelectorAll('.item')
-let produto = 0
-const itens = Array.from(item)
-console.log(itens)
+const botao = document.querySelector('.botao')
 
-itens.forEach(item => {
-  if(item.className.includes('active')){
-    produto++
-  }
-})
-
+const carrinho = []
 
 
 function selecionadoComida(){
@@ -24,6 +16,13 @@ function selecionadoComida(){
     }
   })
   this.classList.add('active')
+  carrinho.push('comida')
+
+  if(carrinho.includes('comida') && carrinho.includes('bebida') && carrinho.includes('sobremesa')){
+    botao.innerHTML = 'Fechar pedido'
+    botao.classList.remove('disable')
+    botao.classList.add('botao-ativo')
+  }
 }
 
 function selecionadoBebida(){
@@ -33,6 +32,13 @@ function selecionadoBebida(){
     }
   })
   this.classList.add('active')
+  carrinho.push('bebida')
+
+  if(carrinho.includes('comida') && carrinho.includes('bebida') && carrinho.includes('sobremesa')){
+    botao.innerHTML = 'Fechar pedido'
+    botao.classList.remove('disable')
+    botao.classList.add('botao-ativo')
+  }
 }
 
 function selecionadoSobremesa(){
@@ -42,6 +48,13 @@ function selecionadoSobremesa(){
     }
   })
   this.classList.add('active')
+  carrinho.push('sobremesa')
+
+  if(carrinho.includes('comida') && carrinho.includes('bebida') && carrinho.includes('sobremesa')){
+    botao.innerHTML = 'Fechar pedido'
+    botao.classList.remove('disable')
+    botao.classList.add('botao-ativo')
+  }
 }
 
 arraySobremesa.forEach(item => {
@@ -55,3 +68,5 @@ arrayAlmoco.forEach(item => {
 arrayBebida.forEach(item => {
   item.addEventListener('click', selecionadoBebida)
 })
+
+console.log(carrinho)
