@@ -122,19 +122,29 @@ arrayBebida.forEach(item => {
   item.addEventListener('click', selecionadoBebida)
 })
 
-const valorComida = carrinhoComida[2]
-const valorBebida = carrinhoBebida[2]
-const valorSobremesa = carrinhoSobremesa[2]
-const valorPedido = valorComida + valorBebida + valorSobremesa
 
-const linha1 = 'Olá, gostaria de fazer o pedido:'
-const linha2 = '- Prato: ' + carrinhoComida[0]
-const linha3 = '- Bebida:' + carrinhoBebida[0]
-const linha4 = '- Sobremesa:' + carrinhoSobremesa[0]
-const linha5 = 'Total: R$' + valorPedido
 
-const msg = linha1 + '\n' + linha2 + '\n' + linha3 + '\n' + linha4 + '\n' + linha5
 
-const url = encodeURIComponent(msg)
+function whatsApp(){
+  const valorComida = carrinhoComida[2]
+  const valorBebida = carrinhoBebida[2]
+  const valorSobremesa = carrinhoSobremesa[2]
+  let valorPedido = valorComida + valorBebida + valorSobremesa
+  valorPedido = valorPedido.toFixed(2)
 
-botao.href = 'https://wa.me/5514996124147?text='+msg
+  const linha1 = 'Olá, gostaria de fazer o pedido:'
+  const linha2 = '- Prato: ' + carrinhoComida[0]
+  const linha3 = '- Bebida: ' + carrinhoBebida[0]
+  const linha4 = '- Sobremesa: ' + carrinhoSobremesa[0]
+  const linha5 = 'Total: R$ ' + valorPedido
+
+  const msg = linha1 + '\n' + linha2 + '\n' + linha3 + '\n' + linha4 + '\n' + linha5
+
+
+  const url = encodeURIComponent(msg)
+  console.log(url)
+
+  botao.href = 'https://wa.me/5511959631890?text='+url
+}
+botao.addEventListener('click', whatsApp)
+
