@@ -147,4 +147,3 @@ function whatsApp(){
   botao.href = 'https://wa.me/5511959631890?text='+url
 }
 botao.addEventListener('click', whatsApp)
-
