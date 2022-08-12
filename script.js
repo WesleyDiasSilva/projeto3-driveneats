@@ -54,7 +54,6 @@ function selecionadoComida(){
   if(carrinhoComida.length > 1){
     carrinhoComida.shift()
   }
-  console.log(carrinhoComida)
 
   //Aqui eu to colocando o produto selecionado num array
 
@@ -88,9 +87,6 @@ function selecionadoBebida(){
     if(carrinhoBebida.length > 1){
       carrinhoBebida.shift()
     }
-  console.log(carrinhoBebida)
-
-
 
   if(carrinhoComida[0] !== undefined && carrinhoBebida[0] !== undefined && carrinhoSobremesa[0] !== undefined){
     botao.innerHTML = 'Fechar pedido'
@@ -121,8 +117,6 @@ function selecionadoSobremesa(){
     if(carrinhoSobremesa.length > 1){
       carrinhoSobremesa.shift()
     }
-
-  console.log( carrinhoSobremesa)
 
 
   if(carrinhoComida[0] !== undefined && carrinhoBebida[0] !== undefined && carrinhoSobremesa[0] !== undefined){
@@ -186,6 +180,9 @@ function whatsApp(){
   const valorComida = carrinhoComida[0].valor
   const valorBebida = carrinhoBebida[0].valor
   const valorSobremesa = carrinhoSobremesa[0].valor
+    console.log(valorComida)
+    console.log(valorBebida)
+    console.log(valorSobremesa)
   let valorPedido = valorComida + valorBebida + valorSobremesa
   valorPedido = valorPedido.toFixed(2)
   valorPedido = ''+valorPedido.replace('.',',')
@@ -211,6 +208,13 @@ function whatsApp(){
 function fecharModal(){
   modal.classList.remove('modal-container')
   modal.classList.add('modal-off')
+  carrinhoBebida = []
+  carrinhoComida = []
+  carrinhoSobremesa = []
+  let itemReset = document.querySelectorAll('.active')
+  itemReset.forEach(item => {
+    item.classList.remove('active')
+  })
 }
 
 botaoCancelar.addEventListener('click', fecharModal)
