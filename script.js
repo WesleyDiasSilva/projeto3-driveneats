@@ -172,21 +172,32 @@ function confirmacao(){
 
 function whatsApp(){
 
-  const nome = prompt('Qual o seu nome?')
-  const endereco = prompt('Qual o seu endereço?')
+  alert('Antes de fechar seu pedido, precisamos apenas de uma confirmação do seu nome e endereço, mas prometo que vai ser rapidinho, ok?! 😉')
 
+  let nome = prompt('Qual o seu nome?')
+  if(nome == null){
+    nome = 'Não informado!'
+  }
+  console.log(nome)
+
+  let endereco = prompt('Qual o seu endereço?')
+
+
+  if(endereco == null){
+    endereco = 'Não informado!'
+  }
   
+  console.log(endereco)
+ 
 
   const valorComida = carrinhoComida[0].valor
   const valorBebida = carrinhoBebida[0].valor
   const valorSobremesa = carrinhoSobremesa[0].valor
-    console.log(valorComida)
-    console.log(valorBebida)
-    console.log(valorSobremesa)
+
   let valorPedido = valorComida + valorBebida + valorSobremesa
   valorPedido = valorPedido.toFixed(2)
   valorPedido = ''+valorPedido.replace('.',',')
-  console.log(valorComida)
+
 
   const linha1 = 'Olá, gostaria de fazer o pedido:'
   const linha2 = '- Prato: ' + carrinhoComida[0].nome
@@ -198,9 +209,7 @@ function whatsApp(){
 
   const msg = linha1 + '\n' + '\n' + linha2 + '\n' + linha3 + '\n' + linha4 + '\n' + linha5 + '\n' + '\n'+ linha6 + '\n' + linha7
 
-
   const url = encodeURIComponent(msg)
-  console.log(url)
 
   botaoPedir.href = 'https://wa.me/5511959631890?text='+url
 }
